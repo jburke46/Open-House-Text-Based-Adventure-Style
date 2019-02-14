@@ -16,10 +16,23 @@ namespace OpenHouseProject
         
         public string Name { get; set; }
 
-        public List<string> Descriptions { get; set; } = new List<string>();
+        public string Descriptions { get; set; }
 
-        public string RoomSelection { get; set; }
-
-
+        public static bool RoomSelection(string response, int position)
+        {
+            if (response == Room.listOfRooms[position - 1].Name)
+            {
+                return true;
+            }
+            else if (response == Room.listOfRooms[position + 1].Name)
+            {
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Incorrect Response. Please Try Again");
+                return false;
+            }
+        }
     }
 }

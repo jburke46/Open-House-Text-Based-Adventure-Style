@@ -5,12 +5,8 @@ using System.Linq;
 
 namespace OpenHouseProject
 {
-    class ResponseFromBuyer
+    class HelperMethods
     {
-        public ResponseFromBuyer (string response)
-        {
-            Response = response;
-        }
-        public string Response { get; set;}
+        
     }
 }
