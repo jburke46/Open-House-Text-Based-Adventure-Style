@@ -1,60 +1,84 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
 namespace OpenHouseProject
 {
     class Program
     {
         static void Main(string[] args)
         {
+            Console.SetWindowSize(100, 20);
+            Console.BufferWidth = 100;
+            
             Room Closet = new Room("Closet");
-            Room.listOfRooms.Add(Closet);
+            Closet.Descriptions = "Master Closet Fill In";
+            Room.ListOfRooms.Add(Closet);
 
             Room MasterBath = new Room("Master Bath");
-            Room.listOfRooms.Add(MasterBath);
+            MasterBath.Descriptions = "Master Bath Fill In";
+            Room.ListOfRooms.Add(MasterBath);
 
             Room MasterBedroom = new Room("Master Bedroom");
-            Room.listOfRooms.Add(MasterBedroom);
+            MasterBedroom.Descriptions = "Master Bedroom Fill In";
+            Room.ListOfRooms.Add(MasterBedroom);
 
             Room Hallway = new Room("Hallway");
-            Room.listOfRooms.Add(Hallway);
+            Hallway.Descriptions = "Hallway Fill In";
+            Room.ListOfRooms.Add(Hallway);
 
             Room LivingRoom = new Room("LivingRoom");
-            Room.listOfRooms.Add(LivingRoom);
+            LivingRoom.Descriptions = "Living Room Fill In";
+            Room.ListOfRooms.Add(LivingRoom);
 
             Room Kitchen = new Room("Kitchen");
             Kitchen.Descriptions = "It has granite countertops.";
-            Room.listOfRooms.Add(Kitchen);
+            Room.ListOfRooms.Add(Kitchen);
 
             Room LaundryRoom = new Room("Laundry Room");
-            Room.listOfRooms.Add(LaundryRoom);
+            LaundryRoom.Descriptions = "Laundry Room Fill In";
+            Room.ListOfRooms.Add(LaundryRoom);
 
             Room Pantry = new Room("Pantry");
-            Room.listOfRooms.Add(Pantry);
+            Pantry.Descriptions = "Pantry Fill In";
+            Room.ListOfRooms.Add(Pantry);
 
 
-            Console.WriteLine("You find yourself outside of a house. It's a single story with red brick and 3 windows. You see a woman out front in a suit waving at you. She is saying somthing you can't quite hear yet. You approach and ask her to repeat herself. She replies \"Welcome to the open house. Would you like to take a flyer?\" (Type Take Flyer or Ignore to continue).");
+            HelperMethods.Type("You find yourself outside of a house. It's a single story with red brick and 3 windows. \nYou see a woman out front in a suit waving at you. She is saying somthing you can't quite hear yet. You approach and ask her to repeat herself.\n She replies \"Welcome to the open house. Would you like to take a flyer?\" \n (Type Take Flyer or Ignore to continue).");
             Console.WriteLine();
             string response = Console.ReadLine();
-            out int position = 4;
+        
+            
             if (response == "Take Flyer")
             {
-                Console.WriteLine();
+                Console.WriteLine("Option A");
             }
             else if (response == "Ignore")
             {
-                Console.WriteLine();
+                Console.WriteLine("Option B");
             }
             else
             {
-                Console.WriteLine();
+                Console.WriteLine("Option C");
             }
-
-            while (true)
+            int NewPosition = 0;
+            int position = 4;
+            bool exited = false;
+            while (exited == false)
             {
-                Console.WriteLine(Room.listOfRooms[position].Descriptions);
+                
+                Console.WriteLine(Room.ListOfRooms[position].Descriptions);
                 response = Console.ReadLine();
-                while (Room.RoomSelection(response, position, out int NewPosition) == false) ;
-
+                while (Room.RoomSelection(response, position, out NewPosition) == false)
+                {
+                    response = Console.ReadLine();
+                    
+                }
+                if (response == "Exit House")
+                {
+                    exited = true;
+                    break;
+                }
+                position = NewPosition;    
             }
 
             /*foreach ( Room element in Room.listOfRooms)

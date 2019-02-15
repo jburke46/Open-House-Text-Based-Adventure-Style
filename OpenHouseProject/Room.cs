@@ -12,7 +12,7 @@ namespace OpenHouseProject
         {
             Name = name;
         }
-        public static List<Room> listOfRooms { get; set; } = new List<Room>();
+        public static List<Room> ListOfRooms { get; set; } = new List<Room>();
         
         public string Name { get; set; }
 
@@ -20,18 +20,23 @@ namespace OpenHouseProject
 
         public static bool RoomSelection(string response, int position, out int NewPosition)
         {
-            if (response == listOfRooms[position - 1].Name)
+            if (response == ListOfRooms[position - 1].Name)
             {
-                response = Console.ReadLine();
-                NewPosition =  position--;
+                //response = Console.ReadLine();
+                NewPosition = --position;
                 return true;
             }
-            else if (response == listOfRooms[position + 1].Name)
+            else if (response == ListOfRooms[position + 1].Name)
             {
-                response = Console.ReadLine();
-                NewPosition = position++;
+                //response = Console.ReadLine();
+                NewPosition = ++position;
                 return true;
                 
+            }
+            else if (response == "Exit House")
+            {
+                NewPosition = position;
+                return true;
             }
             else
             {
