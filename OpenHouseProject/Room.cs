@@ -18,19 +18,25 @@ namespace OpenHouseProject
 
         public string Descriptions { get; set; }
 
-        public static bool RoomSelection(string response, int position)
+        public static bool RoomSelection(string response, int position, out int NewPosition)
         {
-            if (response == Room.listOfRooms[position - 1].Name)
+            if (response == listOfRooms[position - 1].Name)
             {
+                response = Console.ReadLine();
+                NewPosition =  position--;
                 return true;
             }
-            else if (response == Room.listOfRooms[position + 1].Name)
+            else if (response == listOfRooms[position + 1].Name)
             {
+                response = Console.ReadLine();
+                NewPosition = position++;
                 return true;
+                
             }
             else
             {
                 Console.WriteLine("Incorrect Response. Please Try Again");
+                NewPosition = position;
                 return false;
             }
         }

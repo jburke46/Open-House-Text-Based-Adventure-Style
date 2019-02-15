@@ -35,7 +35,7 @@ namespace OpenHouseProject
             Console.WriteLine("You find yourself outside of a house. It's a single story with red brick and 3 windows. You see a woman out front in a suit waving at you. She is saying somthing you can't quite hear yet. You approach and ask her to repeat herself. She replies \"Welcome to the open house. Would you like to take a flyer?\" (Type Take Flyer or Ignore to continue).");
             Console.WriteLine();
             string response = Console.ReadLine();
-            int position = 4;
+            out int position = 4;
             if (response == "Take Flyer")
             {
                 Console.WriteLine();
@@ -48,12 +48,13 @@ namespace OpenHouseProject
             {
                 Console.WriteLine();
             }
-            
-            while(true)
+
+            while (true)
             {
-                Console.WriteLine(Room.listOfRooms[position].Descriptions); 
+                Console.WriteLine(Room.listOfRooms[position].Descriptions);
                 response = Console.ReadLine();
-                while(Room.RoomSelection(response, position))
+                while (Room.RoomSelection(response, position, out int NewPosition) == false) ;
+
             }
 
             /*foreach ( Room element in Room.listOfRooms)
