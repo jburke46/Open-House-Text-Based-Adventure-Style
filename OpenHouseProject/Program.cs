@@ -22,7 +22,7 @@ namespace OpenHouseProject
             Room.listOfRooms.Add(LivingRoom);
 
             Room Kitchen = new Room("Kitchen");
-            Kitchen.Descriptions.Add("It has granite countertops.");
+            Kitchen.Descriptions = "It has granite countertops.";
             Room.listOfRooms.Add(Kitchen);
 
             Room LaundryRoom = new Room("Laundry Room");
@@ -51,7 +51,9 @@ namespace OpenHouseProject
             
             while(true)
             {
+                Console.WriteLine(Room.listOfRooms[position].Descriptions); 
                 response = Console.ReadLine();
+                while(Room.RoomSelection(response, position))
             }
 
             /*foreach ( Room element in Room.listOfRooms)
